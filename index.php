@@ -38,7 +38,7 @@
 		</script>
 </head>
 
-	<body>
+<body>
 	<div id="wrap">
 	<!-- Modal -->
 	<?php
@@ -111,51 +111,51 @@
 				}}
 		}
 
-		function Ani_replace($subject){
-				$en = array("Yahari Ore no Seishun Love Come wa Machigatteiru. Zoku", "Nisekoi","Fate - Stay Night - Unlimited Blade Works (2015)","Fate - Stay Night - Unlimited Blade Works","Grisaia no Rakuen","Dungeon ni Deai o Motomeru no wa Machigatte Iru Darouka","경계의저편");
-				$ko = array("내청코 ", "니세코이 ","페이트 2기 ","페이트 1기  ","낙원 ","던만추","경계의 저편");
-				$zero = $subject;
+	function Ani_replace($subject){
+			$en = array("Yahari Ore no Seishun Love Come wa Machigatteiru. Zoku", "Nisekoi","Fate - Stay Night - Unlimited Blade Works (2015)","Fate - Stay Night - Unlimited Blade Works","Grisaia no Rakuen","Dungeon ni Deai o Motomeru no wa Machigatte Iru Darouka","경계의저편");
+			$ko = array("내청코 ", "니세코이 ","페이트 2기 ","페이트 1기  ","낙원 ","던만추","경계의 저편");
+			$zero = $subject;
 
-				if (strpos($subject,"Leopard") == true)
-					$raw = "RAW ";
-				else if(strpos($subject,"Ohys") == true)
-					$raw = "(";
-				else
-					return $subject;
+			if (strpos($subject,"Leopard") == true)
+				$raw = "RAW ";
+			else if(strpos($subject,"Ohys") == true)
+				$raw = "(";
+			else
+				return $subject;
 
-				$enko = explode("]",$subject);
-				$enko = explode($raw,$enko[1]);
+			$enko = explode("]",$subject);
+			$enko = explode($raw,$enko[1]);
 
-				if (strpos(str_replace($en,$ko,$enko[0]),"(") == true)
-				{
-					$enko = explode("(",$enko[0]);
-					return  str_replace($en,$ko,$enko[0]);
-				}
+			if (strpos(str_replace($en,$ko,$enko[0]),"(") == true)
+			{
+				$enko = explode("(",$enko[0]);
 				return  str_replace($en,$ko,$enko[0]);
-		}
+			}
+			return  str_replace($en,$ko,$enko[0]);
+	}
 
-		function directory_list($dir){
-			echo '<a href="./test.php" style="margin: 3 auto auto 3;" class="btn btn-info">기본폴더</a>';
-			echo '<a href="./test.php?page=라이브" style="margin: 3 auto auto 3;" class="btn btn-warning">라이브</a>';
-			if (is_dir($dir)) {
-				if ($dh = opendir($dir)) {
-					while (($file = readdir($dh)) !== false) {
+	function directory_list($dir){
+		echo '<a href="./test.php" style="margin: 3 auto auto 3;" class="btn btn-info">기본폴더</a>';
+		echo '<a href="./test.php?page=라이브" style="margin: 3 auto auto 3;" class="btn btn-warning">라이브</a>';
+		if (is_dir($dir)) {
+			if ($dh = opendir($dir)) {
+				while (($file = readdir($dh)) !== false) {
 
-						if( $file == '.' || $file == '..' || $file == '미즈키나나' || $file == '라이브' )
-						 continue;
+					if( $file == '.' || $file == '..' || $file == '미즈키나나' || $file == '라이브' )
+					 continue;
 
-						$files[] = $file;
-					}
-					sort($files);
-					foreach($files as $file)
-						if(filetype($dir . $file) == 'dir') {
-							echo '<a href="./test.php?page='.rawurlencode($file).'" style="margin: 3 auto auto 3;" class="btn btn-danger">'.$file.'</a>';
-						}
-					closedir($dh);
+					$files[] = $file;
 				}
+				sort($files);
+				foreach($files as $file)
+					if(filetype($dir . $file) == 'dir') {
+						echo '<a href="./test.php?page='.rawurlencode($file).'" style="margin: 3 auto auto 3;" class="btn btn-danger">'.$file.'</a>';
+					}
+				closedir($dh);
 			}
 		}
-		?>
+	}
+	?>
 	</div> <!-- id: body -->
 	</div> <!-- id: wrap -->
 	</body>
