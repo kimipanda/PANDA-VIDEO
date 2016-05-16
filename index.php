@@ -38,7 +38,7 @@
 		</script>
 </head>
 
-<body>
+	<body>
 	<div id="wrap">
 	<!-- Modal -->
 	<?php
